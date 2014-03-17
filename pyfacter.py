@@ -24,8 +24,7 @@ class Facter(object):
     def __init__(self):
         p = subprocess.Popen(['facter', '--json'], stdout=subprocess.PIPE)
         p.wait()
-        lines = p.stdout.readlines()
-        self.data = json.loads(lines[0])
+        self.data = json.loads(p.stdout.readlines()[0])
 
     def get(self, key):
         return self.data[key]
