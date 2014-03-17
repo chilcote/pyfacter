@@ -34,7 +34,6 @@ class Facter(object):
         for k, v in sorted(self.data.items()):
             print "%s: %s" % (k, v)
 
-
 def main():
     if len(sys.argv) > 2:
         print "Usage: ./pyfacter.py <key>"

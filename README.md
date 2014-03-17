@@ -24,7 +24,7 @@ Import the module into your python script:
 
 	from pyfacter import Facter
 
-	facts = Factor()
+	facts = Facter()
 	os_release = facts.get('operatingsystemrelease')
 	print os_release
 	print facts.all()
