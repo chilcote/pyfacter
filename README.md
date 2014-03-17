@@ -14,20 +14,20 @@ Use pyfacter.py as a standalone script:
 
 	./pyfacter.py [key]
 
-To return all facts and/or determine which key you want, use 'all' as the key, (or better yet, just run facter itself):
+Run with no arguments to return all facts:
 
-	./pyfacter.py all
-
+	./pyfacter.py
 
 Module
 ------
 Import the module into your python script:
 
-	from pyfacter import facter
+	from pyfacter import Facter
 
-	os_release = facter('operatingsystemrelease')
+	facts = Factor()
+	os_release = facts.get('operatingsystemrelease')
 	print os_release
-
+	print facts.all()
 
 References
 ----------

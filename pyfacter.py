@@ -18,24 +18,32 @@
 
 import subprocess, sys, json
 
-def facter(key):
+class Facter(object):
+    '''Facter object'''
+
+    def __init__(self):
         p = subprocess.Popen(['facter', '--json'], stdout=subprocess.PIPE)
         p.wait()
         lines = p.stdout.readlines()
-        data = json.loads(lines[0])
-        if key == 'all':
-                for k, v in sorted(data.items()):
-                        print "%s: %s" % (k, v)
-        else:
-                return data[key]
+        self.data = json.loads(lines[0])
+
+    def get(self, key):
+        return self.data[key]
+
+    def all(self):
+        for k, v in sorted(self.data.items()):
+            print "%s: %s" % (k, v)
+
 
 def main():
-        if len(sys.argv) == 1:
-                facter('all')
-        elif len(sys.argv) == 2:
-                print facter(sys.argv[1])
-        else:
-                print "Usage: ./pyfacter.py <key>"
+    if len(sys.argv) > 2:
+        print "Usage: ./pyfacter.py <key>"
+        sys.exit(0)
+    facts = Facter()
+    if len(sys.argv) == 1:
+        facts.all()
+    elif len(sys.argv) == 2:
+        print facts.get(sys.argv[1])
 
 if __name__ == "__main__":
-        main()
+    main()
