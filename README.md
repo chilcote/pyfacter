@@ -31,7 +31,7 @@ Import the module into your python script:
 
 References
 ----------
-+ [facter documentation](http://docs.puppetlabs.com/facter/1.7/release_notes.html)
++ [facter documentation](http://docs.puppetlabs.com/facter/2.0/release_notes.html)
 
 
 License
